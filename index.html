@@ -31,7 +31,7 @@
         "@id": "https://nusabiomass.com/#organization",
         "name": "NusaBiomass",
         "url": "https://nusabiomass.com/",
-        "logo": "https://nusabiomass.com/logo.png",
+        "logo": "https://nusabiomass.com/assets/logo/logo.png",
         "description": "Indonesia-based B2B exporter of premium biomass fuel products including wood pellets, wood chips, palm kernel shell, candlenut shell, and coconut husk charcoal briquettes.",
         "address": { "@type": "PostalAddress", "addressCountry": "ID", "addressRegion": "Indonesia" },
         "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "email": "export@nusabiomass.com", "availableLanguage": ["English","Indonesian"] }
@@ -59,31 +59,29 @@
   }
   </script>
 
-  <!-- Bebas Neue (display) + DM Sans (body/UI) — clean, authoritative pairing -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 
   <style>
     /* ═══════════════════════════════════════════
-       TOKENS — strict black & white
+       TOKENS
     ═══════════════════════════════════════════ */
     :root {
-      --black:   #0a0a0a;
-      --white:   #ffffff;
-      --off:     #f7f7f5;       /* barely-there warm off-white for section contrast */
-      --rule:    #0a0a0a;       /* border / rule color */
-      --mid:     #888;          /* muted text */
-      --light:   #d4d4d4;       /* very light rule */
+      --black:  #0a0a0a;
+      --white:  #ffffff;
+      --off:    #f7f7f5;
+      --mid:    #888;
+      --light:  #d4d4d4;
 
       --font-display: 'Bebas Neue', 'Arial Narrow', sans-serif;
       --font-body:    'DM Sans', system-ui, sans-serif;
 
-      --border:       1px solid var(--black);
-      --border-2:     2px solid var(--black);
-      --border-3:     3px solid var(--black);
-      --gap:          6rem;
-      --col:          4vw;      /* page gutter */
+      --border:   1px solid var(--black);
+      --border-2: 2px solid var(--black);
+      --border-3: 3px solid var(--black);
+      --gap:      6rem;
+      --col:      4vw;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -109,9 +107,7 @@
     }
 
     /* ═══════════════════════════════════════════
-       NAV
-       Expanded: centered logo mark + logotype stacked, links below
-       Compact: thin strip — icon · logotype left, links right
+       NAV — DESKTOP
     ═══════════════════════════════════════════ */
     #navbar {
       position: fixed;
@@ -119,10 +115,9 @@
       z-index: 500;
       background: var(--white);
       border-bottom: var(--border-2);
-      transition: border-color .3s;
     }
 
-    /* ── EXPANDED ── */
+    /* EXPANDED — stacked center */
     .nav-top {
       display: flex;
       flex-direction: column;
@@ -149,12 +144,6 @@
       transition: width .35s, height .35s;
     }
 
-    /* Logotype: use the text-only logo (image 3 = combined, but we split visually) */
-    .nav-logotype-img {
-      /* We use the full logo (image 1) in expanded and icon-only in compact */
-      display: none; /* hidden — we use CSS text instead for crisp rendering */
-    }
-
     .nav-logotype {
       font-family: var(--font-display);
       font-size: 2rem;
@@ -172,12 +161,11 @@
       letter-spacing: .26em;
       text-transform: uppercase;
       color: var(--mid);
-      transition: opacity .35s, max-height .35s;
       overflow: hidden;
       max-height: 2rem;
+      transition: opacity .35s, max-height .35s;
     }
 
-    /* Divider line between logo block and links */
     .nav-divider {
       width: 100%;
       height: 1px;
@@ -185,14 +173,12 @@
       transition: opacity .35s;
     }
 
-    /* Link bar */
+    /* Link bar — desktop */
     .nav-link-bar {
       display: flex;
       width: 100%;
       justify-content: center;
-      transition: all .35s;
     }
-
     .nav-link-bar a {
       font-family: var(--font-display);
       font-size: 1.1rem;
@@ -206,13 +192,10 @@
     }
     .nav-link-bar a:first-child { border-left: var(--border); }
     .nav-link-bar a:hover { background: var(--black); color: var(--white); }
-    .nav-link-bar a.nav-cta {
-      background: var(--black);
-      color: var(--white);
-    }
+    .nav-link-bar a.nav-cta { background: var(--black); color: var(--white); }
     .nav-link-bar a.nav-cta:hover { background: #333; }
 
-    /* ── COMPACT ── */
+    /* COMPACT — thin strip */
     #navbar.state-compact .nav-top {
       flex-direction: row;
       padding: .5rem var(--col);
@@ -223,10 +206,7 @@
       flex-direction: row;
       gap: .5rem;
     }
-    #navbar.state-compact .nav-logo-img {
-      width: 60px;
-      height: 60px;
-    }
+    #navbar.state-compact .nav-logo-img { width: 40px; height: 40px; }
     #navbar.state-compact .nav-logotype { font-size: 1.2rem; }
     #navbar.state-compact .nav-sub,
     #navbar.state-compact .nav-divider { opacity: 0; max-height: 0; overflow: hidden; }
@@ -241,9 +221,8 @@
       border: none;
     }
     #navbar.state-compact .nav-link-bar a:first-child { border: none; }
-    #navbar.state-compact .nav-link-bar a:hover { background: var(--black); color: var(--white); }
 
-    /* Hamburger */
+    /* Hamburger — hidden on desktop */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -251,10 +230,87 @@
       cursor: pointer;
       background: none;
       border: none;
-      padding: .4rem;
-      margin-left: auto;
+      padding: .5rem;
     }
-    .hamburger span { display: block; width: 20px; height: 1.5px; background: var(--black); transition: .3s; }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--black);
+      transition: .3s;
+    }
+
+    /* ═══════════════════════════════════════════
+       FULLSCREEN MOBILE MENU OVERLAY
+    ═══════════════════════════════════════════ */
+    #mobile-menu {
+      display: none;           /* shown via JS */
+      position: fixed;
+      inset: 0;                /* full screen */
+      z-index: 900;            /* above everything */
+      background: var(--white);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      border: none;
+    }
+    #mobile-menu.open { display: flex; }
+
+    /* Close button — top-right corner */
+    #menu-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 910;
+      background: none;
+      border: var(--border-2);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--black);
+      transition: background .15s, color .15s;
+    }
+    #menu-close:hover { background: var(--black); color: var(--white); }
+
+    /* Nav links inside overlay */
+    #mobile-menu a {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 8vw, 3.5rem);
+      letter-spacing: .06em;
+      color: var(--black);
+      text-decoration: none;
+      padding: .8rem 2rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: var(--border);
+      transition: background .15s, color .15s;
+    }
+    #mobile-menu a:first-of-type { border-top: var(--border); }
+    #mobile-menu a:hover { background: var(--black); color: var(--white); }
+    #mobile-menu a.nav-cta { background: var(--black); color: var(--white); border-bottom: none; }
+    #mobile-menu a.nav-cta:hover { background: #333; }
+
+    /* Small logo + tagline inside the overlay */
+    .menu-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: 2rem;
+    }
+    .menu-brand img { width: 70px; height: 70px; object-fit: contain; }
+    .menu-brand span {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: .1em;
+      color: var(--black);
+    }
 
     /* ═══════════════════════════════════════════
        HERO
@@ -266,11 +322,8 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       border-bottom: var(--border-2);
-      padding: 0;
-      /* nav height injected by JS as margin-top */
     }
 
-    /* All anchor targets clear the fixed nav */
     section, #certs { scroll-margin-top: 10px; }
 
     .hero-left {
@@ -333,7 +386,7 @@
       color: var(--white);
       text-decoration: none;
       border: var(--border-2);
-      transition: background .18s, color .18s;
+      transition: background .18s;
     }
     .btn-solid:hover { background: #333; }
 
@@ -351,7 +404,7 @@
     }
     .btn-outline:hover { background: var(--black); color: var(--white); }
 
-    /* Stats row */
+    /* Stats */
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -363,7 +416,7 @@
       border-right: var(--border);
       border-bottom: var(--border);
       text-align: left;
-      min-width: 0; /* prevent grid blowout */
+      min-width: 0;
     }
     .stat-num {
       display: block;
@@ -384,25 +437,15 @@
       margin-top: .2rem;
     }
 
-    /* Hero right — large logo illustration */
     .hero-right {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       padding: 4rem var(--col);
-      position: relative;
     }
-
-    .hero-logo-wrap {
-      width: clamp(220px, 38vw, 440px);
-      position: relative;
-    }
-    .hero-logo-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+    .hero-logo-wrap { width: clamp(220px, 38vw, 440px); }
+    .hero-logo-wrap img { width: 100%; height: auto; display: block; }
 
     /* ═══════════════════════════════════════════
        SECTION COMMONS
@@ -421,13 +464,7 @@
       align-items: center;
       gap: .7rem;
     }
-    .section-kicker::before {
-      content: '';
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: var(--black);
-    }
+    .section-kicker::before { content: ''; display: block; width: 20px; height: 1px; background: var(--black); }
 
     h2 {
       font-family: var(--font-display);
@@ -450,11 +487,7 @@
     /* ═══════════════════════════════════════════
        PRODUCTS
     ═══════════════════════════════════════════ */
-    #products {
-      background: var(--white);
-      border-top: var(--border-2);
-      border-bottom: var(--border-2);
-    }
+    #products { background: var(--white); border-top: var(--border-2); border-bottom: var(--border-2); }
 
     .products-header {
       display: grid;
@@ -491,11 +524,7 @@
     .product-card:hover .product-name,
     .product-card:hover .product-desc,
     .product-card:hover .product-arrow { color: var(--white); }
-    .product-card:hover .tag {
-      background: var(--white);
-      color: var(--black);
-      border-color: var(--white);
-    }
+    .product-card:hover .tag { background: var(--white); color: var(--black); border-color: var(--white); }
     .product-card:hover .product-icon { background: var(--white); }
     .product-card:hover .product-icon svg { stroke: var(--black); }
     .product-card:hover .product-num { color: rgba(255,255,255,.07); }
@@ -521,38 +550,11 @@
       flex-shrink: 0;
       transition: background .18s;
     }
-    .product-icon svg {
-      width: 18px; height: 18px;
-      stroke: var(--white);
-      fill: none;
-      stroke-width: 1.6;
-      transition: stroke .18s;
-    }
+    .product-icon svg { width: 18px; height: 18px; stroke: var(--white); fill: none; stroke-width: 1.6; transition: stroke .18s; }
 
-    .product-name {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      letter-spacing: .03em;
-      color: var(--black);
-      line-height: 1.05;
-      transition: color .18s;
-    }
-
-    .product-desc {
-      font-family: var(--font-body);
-      font-size: .83rem;
-      font-weight: 300;
-      color: #444;
-      line-height: 1.65;
-      transition: color .18s;
-    }
-
-    .product-spec {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .3rem;
-      margin-top: auto;
-    }
+    .product-name { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .03em; color: var(--black); line-height: 1.05; transition: color .18s; }
+    .product-desc { font-family: var(--font-body); font-size: .83rem; font-weight: 300; color: #444; line-height: 1.65; transition: color .18s; }
+    .product-spec { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: auto; }
 
     .tag {
       font-family: var(--font-body);
@@ -567,35 +569,15 @@
       transition: background .18s, color .18s, border-color .18s;
     }
 
-    .product-arrow {
-      font-family: var(--font-display);
-      font-size: .95rem;
-      letter-spacing: .06em;
-      color: var(--black);
-      margin-top: .4rem;
-      transition: color .18s;
-    }
+    .product-arrow { font-family: var(--font-display); font-size: .95rem; letter-spacing: .06em; color: var(--black); margin-top: .4rem; transition: color .18s; }
 
-    /* Experimental card */
-    .product-card.experimental {
-      background: var(--off);
-      border-style: dashed;
-    }
+    .product-card.experimental { background: var(--off); border-style: dashed; }
     .product-card.experimental:hover { background: var(--black); }
 
     .exp-badge-row { display: flex; gap: .4rem; flex-wrap: wrap; }
-
-    .badge-pill {
-      font-family: var(--font-body);
-      font-size: .58rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .2rem .65rem;
-      border: 1px solid var(--black);
-    }
-    .badge-pill.bio  { background: var(--black); color: var(--white); }
-    .badge-pill.exp  { background: transparent; color: var(--black); }
+    .badge-pill { font-family: var(--font-body); font-size: .58rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .65rem; border: 1px solid var(--black); }
+    .badge-pill.bio { background: var(--black); color: var(--white); }
+    .badge-pill.exp { background: transparent; color: var(--black); }
     .product-card:hover .badge-pill { border-color: var(--white); }
     .product-card:hover .badge-pill.bio { background: var(--white); color: var(--black); }
     .product-card:hover .badge-pill.exp { color: var(--white); }
@@ -612,55 +594,16 @@
       gap: 0;
     }
 
-    .why-text {
-      padding: var(--gap) var(--col);
-      border-right: var(--border-2);
-    }
+    .why-text { padding: var(--gap) var(--col); border-right: var(--border-2); }
     .why-text h2 { margin-bottom: 1rem; }
 
-    .why-list {
-      list-style: none;
-      margin-top: 2rem;
-      border-top: var(--border);
-    }
-
-    .why-item {
-      display: grid;
-      grid-template-columns: 2.8rem 1fr;
-      border-bottom: var(--border);
-      align-items: stretch;
-    }
-
-    .why-num {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: .03em;
-      color: var(--mid);
-      display: grid;
-      place-items: center;
-      border-right: var(--border);
-      padding: .9rem;
-    }
-
+    .why-list { list-style: none; margin-top: 2rem; border-top: var(--border); }
+    .why-item { display: grid; grid-template-columns: 2.8rem 1fr; border-bottom: var(--border); align-items: stretch; }
+    .why-num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .03em; color: var(--mid); display: grid; place-items: center; border-right: var(--border); padding: .9rem; }
     .why-item-text { padding: .9rem 1.1rem; }
-    .why-item-text strong {
-      display: block;
-      font-family: var(--font-body);
-      font-size: .82rem;
-      font-weight: 500;
-      color: var(--black);
-      margin-bottom: .2rem;
-      letter-spacing: .02em;
-    }
-    .why-item-text span {
-      font-family: var(--font-body);
-      font-size: .8rem;
-      font-weight: 300;
-      color: #555;
-      line-height: 1.6;
-    }
+    .why-item-text strong { display: block; font-family: var(--font-body); font-size: .82rem; font-weight: 500; color: var(--black); margin-bottom: .2rem; letter-spacing: .02em; }
+    .why-item-text span { font-family: var(--font-body); font-size: .8rem; font-weight: 300; color: #555; line-height: 1.6; }
 
-    /* Stats 2×2 */
     .why-stats {
       padding: var(--gap) var(--col);
       display: grid;
@@ -670,51 +613,16 @@
       border-left: var(--border);
       align-self: stretch;
     }
-
-    .why-stat-card {
-      padding: 2rem 1.6rem;
-      border-right: var(--border);
-      border-bottom: var(--border);
-      transition: background .18s;
-    }
+    .why-stat-card { padding: 2rem 1.6rem; border-right: var(--border); border-bottom: var(--border); transition: background .18s; }
     .why-stat-card:nth-child(2n) { border-right: none; }
-    .why-stat-card:nth-child(3),
-    .why-stat-card:nth-child(4) { border-bottom: none; }
+    .why-stat-card:nth-child(3), .why-stat-card:nth-child(4) { border-bottom: none; }
     .why-stat-card:hover { background: var(--black); }
     .why-stat-card:hover .why-stat-num,
     .why-stat-card:hover .why-stat-label,
     .why-stat-card:hover .why-stat-sub { color: var(--white); }
-
-    .why-stat-num {
-      display: block;
-      font-family: var(--font-display);
-      font-size: 3.8rem;
-      letter-spacing: .02em;
-      line-height: 1;
-      color: var(--black);
-      margin-bottom: .4rem;
-      transition: color .18s;
-    }
-    .why-stat-label {
-      display: block;
-      font-family: var(--font-body);
-      font-size: .7rem;
-      font-weight: 500;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--black);
-      margin-bottom: .2rem;
-      transition: color .18s;
-    }
-    .why-stat-sub {
-      display: block;
-      font-family: var(--font-body);
-      font-size: .77rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.5;
-      transition: color .18s;
-    }
+    .why-stat-num { display: block; font-family: var(--font-display); font-size: 3.8rem; letter-spacing: .02em; line-height: 1; color: var(--black); margin-bottom: .4rem; transition: color .18s; }
+    .why-stat-label { display: block; font-family: var(--font-body); font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--black); margin-bottom: .2rem; transition: color .18s; }
+    .why-stat-sub { display: block; font-family: var(--font-body); font-size: .77rem; font-weight: 300; color: var(--mid); line-height: 1.5; transition: color .18s; }
 
     /* ═══════════════════════════════════════════
        CERTIFICATIONS BAR
@@ -727,30 +635,13 @@
       gap: 2rem;
       flex-wrap: wrap;
     }
-
-    .certs-label {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: .1em;
-      color: var(--white);
-      white-space: nowrap;
-    }
-
+    .certs-label { font-family: var(--font-display); font-size: 1rem; letter-spacing: .1em; color: var(--white); white-space: nowrap; }
     .certs-badges { display: flex; gap: .5rem; flex-wrap: wrap; }
-
     .cert-badge {
-      font-family: var(--font-body);
-      font-size: .6rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .3rem .85rem;
-      background: transparent;
-      color: var(--white);
+      font-family: var(--font-body); font-size: .6rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      padding: .3rem .85rem; background: transparent; color: var(--white);
       border: 1px solid rgba(255,255,255,.35);
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
+      display: inline-flex; align-items: center; gap: .4rem;
       transition: background .15s, border-color .15s;
     }
     .cert-badge:hover { background: var(--white); color: var(--black); border-color: var(--white); }
@@ -759,11 +650,7 @@
     /* ═══════════════════════════════════════════
        PROCESS
     ═══════════════════════════════════════════ */
-    #process {
-      background: var(--white);
-      border-top: var(--border-2);
-      border-bottom: var(--border-2);
-    }
+    #process { background: var(--white); border-top: var(--border-2); border-bottom: var(--border-2); }
 
     .process-header {
       display: grid;
@@ -781,41 +668,11 @@
       border-top: var(--border-2);
       border-left: var(--border-2);
     }
-
-    .process-step {
-      border-right: var(--border-2);
-      border-bottom: var(--border-2);
-      padding: 2rem 1.6rem;
-      position: relative;
-      transition: background .18s;
-    }
+    .process-step { border-right: var(--border-2); border-bottom: var(--border-2); padding: 2rem 1.6rem; transition: background .18s; }
     .process-step:hover { background: var(--off); }
-
-    .process-step-num {
-      font-family: var(--font-display);
-      font-size: 5rem;
-      letter-spacing: .02em;
-      color: rgba(0,0,0,.06);
-      line-height: 1;
-      margin-bottom: .5rem;
-    }
-
-    .process-step h3 {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      letter-spacing: .04em;
-      color: var(--black);
-      margin-bottom: .6rem;
-      line-height: 1.1;
-    }
-
-    .process-step p {
-      font-family: var(--font-body);
-      font-size: .8rem;
-      font-weight: 300;
-      color: #555;
-      line-height: 1.65;
-    }
+    .process-step-num { font-family: var(--font-display); font-size: 5rem; letter-spacing: .02em; color: rgba(0,0,0,.06); line-height: 1; margin-bottom: .5rem; }
+    .process-step h3 { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: .04em; color: var(--black); margin-bottom: .6rem; line-height: 1.1; }
+    .process-step p { font-family: var(--font-body); font-size: .8rem; font-weight: 300; color: #555; line-height: 1.65; }
 
     /* ═══════════════════════════════════════════
        CONTACT
@@ -828,132 +685,39 @@
       padding: 0;
     }
 
-    .contact-info {
-      padding: var(--gap) var(--col);
-      border-right: var(--border-2);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
+    .contact-info { padding: var(--gap) var(--col); border-right: var(--border-2); display: flex; flex-direction: column; justify-content: center; }
     .contact-info h2 { margin-bottom: 1rem; }
     .contact-info .section-intro { margin-bottom: 2rem; }
-
     .contact-detail { border-top: var(--border); }
+    .contact-item { display: grid; grid-template-columns: 6.5rem 1fr; border-bottom: var(--border); align-items: baseline; }
+    .contact-item strong { font-family: var(--font-body); font-size: .58rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); padding: .8rem .8rem .8rem 0; border-right: var(--border); }
+    .contact-item span { font-family: var(--font-body); font-size: .88rem; font-weight: 300; color: var(--black); padding: .8rem 1rem; }
 
-    .contact-item {
-      display: grid;
-      grid-template-columns: 6.5rem 1fr;
-      border-bottom: var(--border);
-      align-items: baseline;
-    }
+    .contact-form-wrap { padding: var(--gap) var(--col); }
 
-    .contact-item strong {
-      font-family: var(--font-body);
-      font-size: .58rem;
-      font-weight: 500;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--mid);
-      padding: .8rem .8rem .8rem 0;
-      border-right: var(--border);
-    }
-    .contact-item span {
-      font-family: var(--font-body);
-      font-size: .88rem;
-      font-weight: 300;
-      color: var(--black);
-      padding: .8rem 1rem;
-    }
+    form { display: flex; flex-direction: column; gap: .8rem; }
 
-    /* FORM */
-    .contact-form-wrap {
-      padding: var(--gap) var(--col);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: .8rem;
-    }
-
-    .form-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: .06em;
-      color: var(--black);
-      padding-bottom: .8rem;
-      border-bottom: var(--border-2);
-      margin-bottom: .4rem;
-    }
+    .form-title { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .06em; color: var(--black); padding-bottom: .8rem; border-bottom: var(--border-2); margin-bottom: .4rem; }
 
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-
     .form-group { display: flex; flex-direction: column; gap: .3rem; }
-
-    .form-group label {
-      font-family: var(--font-body);
-      font-size: .58rem;
-      font-weight: 500;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--mid);
+    .form-group label { font-family: var(--font-body); font-size: .58rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--mid); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--white); border: var(--border); padding: .65rem .9rem;
+      font-family: var(--font-body); font-size: .9rem; font-weight: 300; color: var(--black);
+      outline: none; width: 100%; appearance: none; transition: border-color .18s;
     }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      background: var(--white);
-      border: var(--border);
-      padding: .65rem .9rem;
-      font-family: var(--font-body);
-      font-size: .9rem;
-      font-weight: 300;
-      color: var(--black);
-      outline: none;
-      width: 100%;
-      appearance: none;
-      transition: border-color .18s;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--black);
-      border-width: 2px;
-    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--black); border-width: 2px; }
     .form-group textarea { resize: vertical; min-height: 90px; }
 
-    .form-submit {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      letter-spacing: .07em;
-      padding: .7rem 2rem;
-      background: var(--black);
-      color: var(--white);
-      border: var(--border-2);
-      cursor: pointer;
-      align-self: flex-start;
-      transition: background .18s;
-    }
+    .form-submit { font-family: var(--font-display); font-size: 1.2rem; letter-spacing: .07em; padding: .7rem 2rem; background: var(--black); color: var(--white); border: var(--border-2); cursor: pointer; align-self: flex-start; transition: background .18s; }
     .form-submit:hover { background: #333; }
-
-    .form-note {
-      font-family: var(--font-body);
-      font-size: .72rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.5;
-    }
+    .form-note { font-family: var(--font-body); font-size: .72rem; font-weight: 300; color: var(--mid); line-height: 1.5; }
 
     /* ═══════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════ */
-    footer {
-      background: var(--black);
-      color: var(--white);
-      padding: 4rem var(--col) 2.5rem;
-      border-top: var(--border-2);
-    }
+    footer { background: var(--black); color: var(--white); padding: 4rem var(--col) 2.5rem; border-top: var(--border-2); }
 
     .footer-grid {
       display: grid;
@@ -964,92 +728,32 @@
       border-bottom: 1px solid rgba(255,255,255,.15);
     }
 
-    .footer-logo-img {
-      width: 150px;
-      height: auto;
-      margin-bottom: 1rem;
-      /* invert white for dark bg */
-      filter: invert(1);
-    }
+    .footer-logo-img { width: 150px; height: auto; margin-bottom: 1rem; filter: invert(1); }
+    .footer-logotype { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .07em; color: var(--white); margin-bottom: .8rem; }
+    .footer-tagline { font-family: var(--font-body); font-size: .8rem; font-weight: 300; color: rgba(255,255,255,.45); line-height: 1.65; max-width: 240px; }
 
-    .footer-logotype {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      letter-spacing: .07em;
-      color: var(--white);
-      margin-bottom: .8rem;
-    }
-
-    .footer-tagline {
-      font-family: var(--font-body);
-      font-size: .8rem;
-      font-weight: 300;
-      color: rgba(255,255,255,.45);
-      line-height: 1.65;
-      max-width: 240px;
-    }
-
-    .footer-col h4 {
-      font-family: var(--font-body);
-      font-size: .58rem;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-      margin-bottom: 1rem;
-      padding-bottom: .5rem;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-
+    .footer-col h4 { font-family: var(--font-body); font-size: .58rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.1); }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-    .footer-col a {
-      font-family: var(--font-body);
-      font-size: .85rem;
-      font-weight: 300;
-      color: rgba(255,255,255,.5);
-      text-decoration: none;
-      transition: color .18s;
-    }
+    .footer-col a { font-family: var(--font-body); font-size: .85rem; font-weight: 300; color: rgba(255,255,255,.5); text-decoration: none; transition: color .18s; }
     .footer-col a:hover { color: var(--white); }
 
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: .8rem;
-      font-family: var(--font-body);
-      font-size: .72rem;
-      font-weight: 300;
-      color: rgba(255,255,255,.28);
-      letter-spacing: .04em;
-    }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .8rem; font-family: var(--font-body); font-size: .72rem; font-weight: 300; color: rgba(255,255,255,.28); letter-spacing: .04em; }
 
     /* ── TOAST ─────────────────────────────── */
     #toast {
-      position: fixed;
-      bottom: 2rem; right: 2rem;
-      background: var(--black);
-      color: var(--white);
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--black); color: var(--white);
       padding: .9rem 1.6rem;
-      font-family: var(--font-display);
-      font-size: 1rem;
-      letter-spacing: .06em;
+      font-family: var(--font-display); font-size: 1rem; letter-spacing: .06em;
       border: var(--border-2);
-      transform: translateY(8px);
-      opacity: 0;
+      transform: translateY(8px); opacity: 0;
       transition: opacity .3s, transform .3s;
-      z-index: 999;
-      pointer-events: none;
+      z-index: 999; pointer-events: none;
     }
     #toast.show { opacity: 1; transform: translateY(0); }
 
     /* ── FADE-UP ───────────────────────────── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .55s ease, transform .55s ease;
-    }
+    .fade-up { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ═══════════════════════════════════════════
@@ -1066,7 +770,6 @@
       #why { grid-template-columns: 1fr; }
       .why-text { border-right: none; border-bottom: var(--border-2); }
       .why-stats { padding: var(--gap) var(--col); }
-      .contact-grid { grid-template-columns: 1fr; }
       #contact { grid-template-columns: 1fr; }
       .contact-info { border-right: none; border-bottom: var(--border-2); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -1076,72 +779,80 @@
 
     @media (max-width: 640px) {
       :root { --gap: 3.5rem; }
+
+      /* Products */
       .products-grid { grid-template-columns: 1fr; }
       .product-card { border-right: none; }
+
+      /* Process */
       .process-steps { grid-template-columns: 1fr 1fr; }
+
+      /* Footer */
       .footer-grid { grid-template-columns: 1fr; }
+
+      /* Form */
       .form-row { grid-template-columns: 1fr; }
+
+      /* Stats 2×2 */
       .hero-stats { grid-template-columns: repeat(2, 1fr); }
       .stat-num { font-size: 1.7rem; }
+
+      /* Why stats */
       .why-stats { grid-template-columns: 1fr 1fr; }
 
-      /* ── Mobile nav: always compact layout, hamburger always visible ── */
-      /* Force nav-top to row on mobile regardless of scroll state */
+      /* ── MOBILE NAV ──
+         Collapse to: centered logo + logotype, hamburger below  */
       .nav-top {
-        flex-direction: row !important;
-        padding: .7rem var(--col) !important;
-        gap: .6rem !important;
+        flex-direction: column !important;
         align-items: center !important;
+        padding: 1rem var(--col) .6rem !important;
+        gap: .2rem !important;
       }
       .nav-logo-link {
-        flex-direction: row !important;
-        gap: .5rem !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: .25rem !important;
       }
       .nav-logo-img {
-        width: 32px !important;
-        height: 32px !important;
+        width: 60px !important;
+        height: 60px !important;
       }
-      .nav-logotype {
-        font-size: 1.25rem !important;
-        white-space: nowrap;
+      .nav-logotype { font-size: 1.4rem !important; }
+      .nav-sub { display: block !important; max-height: 2rem; }
+
+      /* Show hamburger below logo on mobile */
+      .hamburger {
+        display: flex !important;
+        margin: .3rem auto 0 !important;
+        align-self: center !important;
       }
-      /* Hide tagline and divider on mobile always */
-      .nav-sub { display: none !important; }
+
+      /* Hide desktop link bar on mobile */
+      .nav-link-bar { display: none !important; }
       .nav-divider { display: none !important; }
 
-      /* Nav links: hidden by default, dropdown when open */
-      .nav-link-bar {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%; left: 0; right: 0;
-        background: var(--white);
-        border-top: var(--border-2);
-        border-bottom: var(--border-2);
-        z-index: 400;
+      /* Compact state on mobile: still centered col */
+      #navbar.state-compact .nav-top {
+        flex-direction: column !important;
+        padding: .7rem var(--col) .5rem !important;
       }
-      .nav-link-bar.open { display: flex; }
-      .nav-link-bar a {
-        border: none !important;
-        border-bottom: var(--border) !important;
-        padding: .85rem var(--col) !important;
-        font-size: 1.3rem !important;
-        width: 100%;
+      #navbar.state-compact .nav-logo-link {
+        flex-direction: column !important;
+        align-items: center !important;
       }
-      .nav-link-bar a.nav-cta { border-bottom: none !important; }
+      #navbar.state-compact .nav-logo-img { width: 36px !important; height: 36px !important; }
+      #navbar.state-compact .nav-logotype { font-size: 1.1rem !important; }
+      #navbar.state-compact .nav-sub { max-height: 0; opacity: 0; }
+      #navbar.state-compact .nav-link-bar { display: none !important; }
 
-      /* Always show hamburger on mobile */
-      .hamburger { display: flex !important; }
-
-      /* Hero mobile: enough top padding so content clears nav */
+      /* Hero mobile */
       .hero-left {
         border-right: none;
         border-bottom: var(--border-2);
-        padding: 2.5rem var(--col) 3rem !important;
+        padding: 2rem var(--col) 3rem !important;
         height: auto;
-        min-height: calc(100svh - 56px);
+        min-height: 85svh;
         justify-content: flex-start;
-        padding-top: 2.5rem !important;
       }
     }
   </style>
@@ -1152,32 +863,41 @@
 
 <!-- ══ NAV ════════════════════════════════════ -->
 <nav id="navbar" class="state-expanded" role="navigation" aria-label="Main">
-
   <div class="nav-top">
     <a class="nav-logo-link" href="/" aria-label="NusaBiomass — Home">
       <img class="nav-logo-img" id="navLogoImg" src="assets/logo/logo.png" alt="NusaBiomass mark" />
       <span class="nav-logotype">NUSA BIOMASS</span>
       <span class="nav-sub">Indonesia's Green Energy</span>
     </a>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+    <!-- Hamburger sits below logo on mobile via flex column order -->
+    <button class="hamburger" id="hamburger" onclick="openMenu()" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
-
   <div class="nav-divider"></div>
-
   <div class="nav-link-bar" id="navLinks">
     <a href="#products">Products</a>
     <a href="#why">Why Us</a>
     <a href="#process">Process</a>
     <a href="#contact" class="nav-cta">Get a Quote</a>
   </div>
-
 </nav>
+
+<!-- ══ FULLSCREEN MOBILE MENU ════════════════ -->
+<div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button id="menu-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
+  <div class="menu-brand">
+    <img src="assets/logo/logo.png" alt="NusaBiomass" />
+    <span>NUSA BIOMASS</span>
+  </div>
+  <a href="#products" onclick="closeMenu()">Products</a>
+  <a href="#why"      onclick="closeMenu()">Why Us</a>
+  <a href="#process"  onclick="closeMenu()">Process</a>
+  <a href="#contact"  onclick="closeMenu()" class="nav-cta">Get a Quote</a>
+</div>
 
 <!-- ══ HERO ════════════════════════════════════ -->
 <section id="hero" aria-label="Hero">
-
   <div class="hero-left">
     <div class="hero-eyebrow">Indonesia Export · Est. 2010</div>
     <h1>INDONESIA'S<br>GREEN<br>ENERGY</h1>
@@ -1189,31 +909,17 @@
       <a href="#products" class="btn-outline">View Products</a>
     </div>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">6+</span>
-        <span class="stat-label">Product Lines</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">20+</span>
-        <span class="stat-label">Countries</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">15k+</span>
-        <span class="stat-label">MT / Month</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Renewable</span>
-      </div>
+      <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Product Lines</span></div>
+      <div class="stat"><span class="stat-num">20+</span><span class="stat-label">Countries</span></div>
+      <div class="stat"><span class="stat-num">15k+</span><span class="stat-label">MT / Month</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Renewable</span></div>
     </div>
   </div>
-
   <div class="hero-right" aria-hidden="true">
     <div class="hero-logo-wrap">
       <img src="logo.png" alt="" />
     </div>
   </div>
-
 </section>
 
 <!-- ══ PRODUCTS ════════════════════════════════ -->
@@ -1225,103 +931,56 @@
     </div>
     <p class="section-intro">Each product is processed to international standards with consistent moisture, ash content, and calorific value — backed by full export documentation for customs and compliance.</p>
   </div>
-
   <div class="products-grid">
-
     <a href="products/wood-pellets.html" class="product-card fade-up">
       <span class="product-num">01</span>
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3.6 9h16.8M3.6 15h16.8"/></svg>
-      </div>
+      <div class="product-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="3" x2="12" y2="21"/><path d="M3.6 9h16.8M3.6 15h16.8"/></svg></div>
       <div class="product-name">Wood Pellets</div>
       <p class="product-desc">ENplus A1/A2-grade pellets pressed from clean wood residue — no binders, no chemicals. Uniform diameter for automated biomass boilers worldwide.</p>
-      <div class="product-spec">
-        <span class="tag">3,400–4,200 kCal</span>
-        <span class="tag">≤10% moisture</span>
-        <span class="tag">6–8mm dia.</span>
-        <span class="tag">ENplus</span>
-      </div>
+      <div class="product-spec"><span class="tag">3,400–4,200 kCal</span><span class="tag">≤10% moisture</span><span class="tag">6–8mm dia.</span><span class="tag">ENplus</span></div>
       <span class="product-arrow">View Specs →</span>
     </a>
-
     <a href="products/wood-chips.html" class="product-card fade-up">
       <span class="product-num">02</span>
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="8.5" x2="22" y2="8.5"/></svg>
-      </div>
+      <div class="product-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="8.5" x2="22" y2="8.5"/></svg></div>
       <div class="product-name">Wood Chips</div>
       <p class="product-desc">Bulk chips from plantation timber for direct combustion in biomass power stations and pulp mills. G30 and G50 chip sizes per ISO 17225-4.</p>
-      <div class="product-spec">
-        <span class="tag">ISO 17225-4</span>
-        <span class="tag">G30 / G50</span>
-        <span class="tag">Bulk container</span>
-      </div>
+      <div class="product-spec"><span class="tag">ISO 17225-4</span><span class="tag">G30 / G50</span><span class="tag">Bulk container</span></div>
       <span class="product-arrow">View Specs →</span>
     </a>
-
     <a href="products/palm-kernel-shell.html" class="product-card fade-up">
       <span class="product-num">03</span>
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6c0 3.31-2.69 6-6 6"/><path d="M12 6c0 3.31 2.69 6 6 6"/></svg>
-      </div>
+      <div class="product-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6c0 3.31-2.69 6-6 6"/><path d="M12 6c0 3.31 2.69 6 6 6"/></svg></div>
       <div class="product-name">Palm Kernel Shell</div>
       <p class="product-desc">High-density PKS from Indonesian CPO mills — proven co-firing fuel. Low sulfur content, accepted under EU and Japanese sustainability programs.</p>
-      <div class="product-spec">
-        <span class="tag">3,500–4,000 kCal</span>
-        <span class="tag">Low sulfur</span>
-        <span class="tag">ISCC cert</span>
-      </div>
+      <div class="product-spec"><span class="tag">3,500–4,000 kCal</span><span class="tag">Low sulfur</span><span class="tag">ISCC cert</span></div>
       <span class="product-arrow">View Specs →</span>
     </a>
-
     <a href="products/candlenut-shell.html" class="product-card fade-up">
       <span class="product-num">04</span>
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6"/><ellipse cx="12" cy="12" rx="6" ry="10"/></svg>
-      </div>
+      <div class="product-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6"/><ellipse cx="12" cy="12" rx="6" ry="10"/></svg></div>
       <div class="product-name">Candlenut Shell</div>
       <p class="product-desc">Dense hard shells with excellent burning properties — a growing niche commodity for Japan and South Korea's renewable power sector.</p>
-      <div class="product-spec">
-        <span class="tag">~4,100 kCal</span>
-        <span class="tag">Hard density</span>
-        <span class="tag">Low ash</span>
-      </div>
+      <div class="product-spec"><span class="tag">~4,100 kCal</span><span class="tag">Hard density</span><span class="tag">Low ash</span></div>
       <span class="product-arrow">View Specs →</span>
     </a>
-
     <a href="products/coconut-husk-briquettes.html" class="product-card fade-up">
       <span class="product-num">05</span>
-      <div class="product-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><line x1="12" y1="11" x2="12" y2="15"/></svg>
-      </div>
+      <div class="product-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><line x1="12" y1="11" x2="12" y2="15"/></svg></div>
       <div class="product-name">Coconut Husk &amp; Charcoal Briquettes</div>
       <p class="product-desc">Premium coconut shell charcoal briquettes for shisha, BBQ, and industrial heat. Consistent shape, long burn time, minimal ash residue.</p>
-      <div class="product-spec">
-        <span class="tag">~7,000 kCal</span>
-        <span class="tag">≤5% moisture</span>
-        <span class="tag">Cube / Hex</span>
-      </div>
+      <div class="product-spec"><span class="tag">~7,000 kCal</span><span class="tag">≤5% moisture</span><span class="tag">Cube / Hex</span></div>
       <span class="product-arrow">View Specs →</span>
     </a>
-
     <a href="products/spent-coffee-grounds-bio-briquette.html" class="product-card experimental fade-up">
       <span class="product-num">06</span>
-      <div class="exp-badge-row">
-        <span class="badge-pill bio">Bio-Briquette</span>
-        <span class="badge-pill exp">Experimental</span>
-      </div>
-      <div class="product-icon" style="background:var(--black);">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
-      </div>
+      <div class="exp-badge-row"><span class="badge-pill bio">Bio-Briquette</span><span class="badge-pill exp">Experimental</span></div>
+      <div class="product-icon" style="background:var(--black);"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></div>
       <div class="product-name">SCG Bio-Briquette</div>
       <p class="product-desc">Zero-waste bio-briquette from spent coffee grounds — circular economy fuel with energy content comparable to dry wood. Research-backed by IPB University &amp; BRIN. Partnership inquiries welcome.</p>
-      <div class="product-spec">
-        <span class="tag">5,169–5,500 kCal</span>
-        <span class="tag">Pilot scale</span>
-      </div>
+      <div class="product-spec"><span class="tag">5,169–5,500 kCal</span><span class="tag">Pilot scale</span></div>
       <span class="product-arrow">Learn More →</span>
     </a>
-
   </div>
 </section>
 
@@ -1332,57 +991,17 @@
     <h2>DIRECT<br>FROM MILL.<br>EXPORT<br>READY.</h2>
     <p class="section-intro" style="margin-top:.8rem;">We are not a trader. Every product ships direct from our own production facilities and partner mills across Sumatra, Kalimantan, and Java — no middlemen, full traceability.</p>
     <ul class="why-list">
-      <li class="why-item">
-        <span class="why-num">01</span>
-        <div class="why-item-text">
-          <strong>Consistent Quality, Every Shipment</strong>
-          <span>Pre-shipment samples and SGS/Intertek third-party inspection. All specs documented per ISO and ENplus standards.</span>
-        </div>
-      </li>
-      <li class="why-item">
-        <span class="why-num">02</span>
-        <div class="why-item-text">
-          <strong>High-Volume Supply Capacity</strong>
-          <span>5,000–15,000 MT monthly orders. Flexible Incoterms: FOB Belawan, FOB Tanjung Priok, CIF, CNF.</span>
-        </div>
-      </li>
-      <li class="why-item">
-        <span class="why-num">03</span>
-        <div class="why-item-text">
-          <strong>Full Sustainability Documentation</strong>
-          <span>ISCC-certified supply chains, PHPL/SLK legality documents, phytosanitary certificates for all products.</span>
-        </div>
-      </li>
-      <li class="why-item">
-        <span class="why-num">04</span>
-        <div class="why-item-text">
-          <strong>Dedicated Export Support</strong>
-          <span>English-speaking team handles L/C, bank transfers, shipping and port documentation end-to-end.</span>
-        </div>
-      </li>
+      <li class="why-item"><span class="why-num">01</span><div class="why-item-text"><strong>Consistent Quality, Every Shipment</strong><span>Pre-shipment samples and SGS/Intertek third-party inspection. All specs documented per ISO and ENplus standards.</span></div></li>
+      <li class="why-item"><span class="why-num">02</span><div class="why-item-text"><strong>High-Volume Supply Capacity</strong><span>5,000–15,000 MT monthly orders. Flexible Incoterms: FOB Belawan, FOB Tanjung Priok, CIF, CNF.</span></div></li>
+      <li class="why-item"><span class="why-num">03</span><div class="why-item-text"><strong>Full Sustainability Documentation</strong><span>ISCC-certified supply chains, PHPL/SLK legality documents, phytosanitary certificates for all products.</span></div></li>
+      <li class="why-item"><span class="why-num">04</span><div class="why-item-text"><strong>Dedicated Export Support</strong><span>English-speaking team handles L/C, bank transfers, shipping and port documentation end-to-end.</span></div></li>
     </ul>
   </div>
   <div class="why-stats fade-up">
-    <div class="why-stat-card">
-      <span class="why-stat-num">15k</span>
-      <span class="why-stat-label">MT / Month</span>
-      <span class="why-stat-sub">Combined export capacity across all product lines</span>
-    </div>
-    <div class="why-stat-card">
-      <span class="why-stat-num">20+</span>
-      <span class="why-stat-label">Countries Served</span>
-      <span class="why-stat-sub">Japan, S. Korea, EU, Middle East &amp; beyond</span>
-    </div>
-    <div class="why-stat-card">
-      <span class="why-stat-num">48h</span>
-      <span class="why-stat-label">Quote Turnaround</span>
-      <span class="why-stat-sub">Detailed offers with spec sheets within 48 hours</span>
-    </div>
-    <div class="why-stat-card">
-      <span class="why-stat-num">0</span>
-      <span class="why-stat-label">Middlemen</span>
-      <span class="why-stat-sub">Direct mill-to-buyer — lower cost, full traceability</span>
-    </div>
+    <div class="why-stat-card"><span class="why-stat-num">15k</span><span class="why-stat-label">MT / Month</span><span class="why-stat-sub">Combined export capacity across all product lines</span></div>
+    <div class="why-stat-card"><span class="why-stat-num">20+</span><span class="why-stat-label">Countries Served</span><span class="why-stat-sub">Japan, S. Korea, EU, Middle East &amp; beyond</span></div>
+    <div class="why-stat-card"><span class="why-stat-num">48h</span><span class="why-stat-label">Quote Turnaround</span><span class="why-stat-sub">Detailed offers with spec sheets within 48 hours</span></div>
+    <div class="why-stat-card"><span class="why-stat-num">0</span><span class="why-stat-label">Middlemen</span><span class="why-stat-sub">Direct mill-to-buyer — lower cost, full traceability</span></div>
   </div>
 </section>
 
@@ -1409,31 +1028,11 @@
     <p class="section-intro">A transparent export process built for buyers who need reliable biomass at scale — no surprises at the port.</p>
   </div>
   <div class="process-steps">
-    <div class="process-step fade-up">
-      <div class="process-step-num">01</div>
-      <h3>Submit Inquiry</h3>
-      <p>Tell us your product, volume, destination port, and target calorific specs. Use the form below or email us directly.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="process-step-num">02</div>
-      <h3>Formal Offer</h3>
-      <p>Within 48 hours we send a detailed commercial offer with FOB/CIF pricing, spec sheet, and delivery timeline.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="process-step-num">03</div>
-      <h3>Pre-Shipment Inspection</h3>
-      <p>Samples dispatched for approval. Third-party inspection via SGS or Intertek arranged upon request or as standard.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="process-step-num">04</div>
-      <h3>Production &amp; Loading</h3>
-      <p>Production commences on confirmed PO and payment terms. Bulk vessel or containerised, stuffed at origin port.</p>
-    </div>
-    <div class="process-step fade-up">
-      <div class="process-step-num">05</div>
-      <h3>Docs &amp; Delivery</h3>
-      <p>Full docs — B/L, COA, packing list, phytosanitary, ISCC — sent digitally within 3 days of vessel departure.</p>
-    </div>
+    <div class="process-step fade-up"><div class="process-step-num">01</div><h3>Submit Inquiry</h3><p>Tell us your product, volume, destination port, and target calorific specs. Use the form below or email us directly.</p></div>
+    <div class="process-step fade-up"><div class="process-step-num">02</div><h3>Formal Offer</h3><p>Within 48 hours we send a detailed commercial offer with FOB/CIF pricing, spec sheet, and delivery timeline.</p></div>
+    <div class="process-step fade-up"><div class="process-step-num">03</div><h3>Pre-Shipment Inspection</h3><p>Samples dispatched for approval. Third-party inspection via SGS or Intertek arranged upon request or as standard.</p></div>
+    <div class="process-step fade-up"><div class="process-step-num">04</div><h3>Production &amp; Loading</h3><p>Production commences on confirmed PO and payment terms. Bulk vessel or containerised, stuffed at origin port.</p></div>
+    <div class="process-step fade-up"><div class="process-step-num">05</div><h3>Docs &amp; Delivery</h3><p>Full docs — B/L, COA, packing list, phytosanitary, ISCC — sent digitally within 3 days of vessel departure.</p></div>
   </div>
 </section>
 
@@ -1444,82 +1043,43 @@
     <h2>LET'S TALK<br>BUSINESS</h2>
     <p class="section-intro">Ready to source biomass fuel from Indonesia? Our export team responds within one business day.</p>
     <div class="contact-detail">
-      <div class="contact-item">
-        <strong>Email</strong>
-        <span>export@nusabiomass.com</span>
-      </div>
-      <div class="contact-item">
-        <strong>WhatsApp</strong>
-        <span>+62 812 0000 0000</span>
-      </div>
-      <div class="contact-item">
-        <strong>Location</strong>
-        <span>Jakarta &amp; Sumatra, Indonesia</span>
-      </div>
-      <div class="contact-item">
-        <strong>Hours</strong>
-        <span>Mon–Fri, 08:00–17:00 WIB (GMT+7)</span>
-      </div>
+      <div class="contact-item"><strong>Email</strong><span>export@nusabiomass.com</span></div>
+      <div class="contact-item"><strong>WhatsApp</strong><span>+62 812 0000 0000</span></div>
+      <div class="contact-item"><strong>Location</strong><span>Jakarta &amp; Sumatra, Indonesia</span></div>
+      <div class="contact-item"><strong>Hours</strong><span>Mon–Fri, 08:00–17:00 WIB (GMT+7)</span></div>
     </div>
   </div>
-
   <div class="contact-form-wrap fade-up">
     <form id="contactForm" novalidate>
       <div class="form-title">SEND AN ENQUIRY</div>
       <div class="form-row">
-        <div class="form-group">
-          <label for="name">Full Name *</label>
-          <input type="text" id="name" name="name" placeholder="Your full name" required />
-        </div>
-        <div class="form-group">
-          <label for="company">Company *</label>
-          <input type="text" id="company" name="company" placeholder="Company name" required />
-        </div>
+        <div class="form-group"><label for="name">Full Name *</label><input type="text" id="name" name="name" placeholder="Your full name" required /></div>
+        <div class="form-group"><label for="company">Company *</label><input type="text" id="company" name="company" placeholder="Company name" required /></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" placeholder="you@company.com" required />
-        </div>
-        <div class="form-group">
-          <label for="country">Destination Country *</label>
-          <input type="text" id="country" name="country" placeholder="e.g. Japan, South Korea" required />
-        </div>
+        <div class="form-group"><label for="email">Email Address *</label><input type="email" id="email" name="email" placeholder="you@company.com" required /></div>
+        <div class="form-group"><label for="country">Destination Country *</label><input type="text" id="country" name="country" placeholder="e.g. Japan, South Korea" required /></div>
       </div>
       <div class="form-group">
         <label for="product">Product of Interest *</label>
         <select id="product" name="product" required>
           <option value="" disabled selected>Select a product</option>
-          <option>Wood Pellets</option>
-          <option>Wood Chips</option>
-          <option>Palm Kernel Shell (PKS)</option>
-          <option>Candlenut Shell</option>
-          <option>Coconut Husk / Charcoal Briquettes</option>
-          <option>SCG Bio-Briquette (Experimental)</option>
-          <option>Multiple Products</option>
+          <option>Wood Pellets</option><option>Wood Chips</option><option>Palm Kernel Shell (PKS)</option>
+          <option>Candlenut Shell</option><option>Coconut Husk / Charcoal Briquettes</option>
+          <option>SCG Bio-Briquette (Experimental)</option><option>Multiple Products</option>
         </select>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label for="volume">Volume (MT/month)</label>
-          <input type="text" id="volume" name="volume" placeholder="e.g. 1,000 MT" />
-        </div>
+        <div class="form-group"><label for="volume">Volume (MT/month)</label><input type="text" id="volume" name="volume" placeholder="e.g. 1,000 MT" /></div>
         <div class="form-group">
           <label for="incoterms">Preferred Incoterms</label>
           <select id="incoterms" name="incoterms">
             <option value="" disabled selected>Select</option>
-            <option>FOB</option>
-            <option>CIF</option>
-            <option>CNF</option>
-            <option>EXW</option>
-            <option>Not sure yet</option>
+            <option>FOB</option><option>CIF</option><option>CNF</option><option>EXW</option><option>Not sure yet</option>
           </select>
         </div>
       </div>
-      <div class="form-group">
-        <label for="message">Additional Requirements</label>
-        <textarea id="message" name="message" placeholder="Specifications, certifications needed, delivery schedule…"></textarea>
-      </div>
+      <div class="form-group"><label for="message">Additional Requirements</label><textarea id="message" name="message" placeholder="Specifications, certifications needed, delivery schedule…"></textarea></div>
       <p class="form-note">We respond within one business day. Your information is never shared with third parties.</p>
       <button type="submit" class="form-submit">SEND ENQUIRY →</button>
     </form>
@@ -1531,7 +1091,6 @@
   <div class="footer-grid">
     <div>
       <img class="footer-logo-img" src="assets/logo/logotype.png" alt="NusaBiomass" />
-      
       <p class="footer-tagline">Indonesia's trusted B2B exporter of premium renewable biomass fuel — wood pellets, wood chips, PKS, candlenut shell, and coconut charcoal briquettes.</p>
     </div>
     <div class="footer-col">
@@ -1564,49 +1123,55 @@
 <div id="toast" role="status">Enquiry sent — we'll be in touch within 24 hours.</div>
 
 <script>
-  /* ── NAV ───────────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-  const hero   = document.getElementById('hero');
+  /* ── NAV STATE ─────────────────────────────── */
+  const navbar    = document.getElementById('navbar');
+  const hero      = document.getElementById('hero');
+  const navLogoImg = document.getElementById('navLogoImg');
 
   function updateNav() {
     const compact = window.scrollY > 60;
     navbar.classList.toggle('state-compact',  compact);
     navbar.classList.toggle('state-expanded', !compact);
-    // Push hero below the fixed nav using margin-top
-    // (padding-top would shrink the effective min-height)
     hero.style.marginTop = navbar.offsetHeight + 'px';
   }
   window.addEventListener('scroll', updateNav, { passive: true });
   window.addEventListener('resize', updateNav, { passive: true });
   window.addEventListener('load',   updateNav);
+  navLogoImg.addEventListener('load', updateNav);
   updateNav();
 
-  /* ── PROGRESS BAR ──────────────────────────── */
+  /* ── FULLSCREEN MOBILE MENU ────────────────── */
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ── SCROLL PROGRESS ───────────────────────── */
   const bar = document.getElementById('progress-bar');
   window.addEventListener('scroll', () => {
     const max = document.body.scrollHeight - window.innerHeight;
     bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
   }, { passive: true });
 
-  /* ── MOBILE MENU ───────────────────────────── */
-  function toggleMenu() {
-    const links = document.getElementById('navLinks');
-    const btn   = document.getElementById('hamburger');
-    const open  = links.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-  }
-  document.querySelectorAll('#navLinks a').forEach(a =>
-    a.addEventListener('click', () => {
-      document.getElementById('navLinks').classList.remove('open');
-      document.getElementById('hamburger').setAttribute('aria-expanded','false');
-    })
-  );
-
   /* ── FADE-UP ───────────────────────────────── */
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting)
-        setTimeout(() => e.target.classList.add('visible'), +(e.target.dataset.delay||0));
+        setTimeout(() => e.target.classList.add('visible'), +(e.target.dataset.delay || 0));
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach((el, i) => {
